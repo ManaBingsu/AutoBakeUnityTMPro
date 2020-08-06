@@ -149,8 +149,6 @@ namespace EditorAutomation
             BobbinCore.DoRefresh();
             Debug.Log("Complete Bobbin Refresh");
 
-            // Check if list is null
-
             // Bake text
             foreach (Location location in locations)
             {
@@ -163,7 +161,7 @@ namespace EditorAutomation
                         continue;
                     }
 
-                    Debug.Log("Bake [" + location.name + "](" + fontAsset.name + ")");
+                    Debug.Log($"Bake [ {location.name} ]( {fontAsset.name} )");
                     // Step 1 : Parsing with CsvReader
                     StringBuilder strBuilder = new StringBuilder();
                     using (var streamRdr = new StreamReader(stringPath))
@@ -198,17 +196,16 @@ namespace EditorAutomation
                     fontAsset.ClearFontAssetData();
                     KeyValuePair<TMP_FontAsset, uint[]> value = new KeyValuePair<TMP_FontAsset, uint[]>(fontAsset, characterSet);
                     TMPro_FontAssetCreatorWindow.ShowFontAtlasCreatorWindow(value);
-                    //fontAsset.TryAddCharacters(characterSet, out missingString);
 
+                    StringBuilder missingStrBuilder = new StringBuilder();
                     if (missingString != null)
                     {
-                        string temp = "";
                         foreach (uint unicode in missingString)
                         {
-                            temp += Convert.ToChar(unicode);
-                            temp += " ";
+                            missingStrBuilder.Append(Convert.ToChar(unicode));
+                            missingStrBuilder.Append(" ");
                         }
-                        Debug.LogError("<color=red>[Fatal error] </color>Missing string : " + temp + " ");
+                        Debug.LogError($"<color=red>[Fatal error] </color>Missing string : {missingStrBuilder} ");
                     }
                     fontAsset.atlasPopulationMode = AtlasPopulationMode.Static;
                     TMPro_EventManager.ON_FONT_PROPERTY_CHANGED(true, fontAsset);
