@@ -10,7 +10,7 @@ using TMPro.EditorUtilities;
 using System.Collections;
 using UnityEditorInternal;
 
-namespace EditorAutomation
+namespace AutoBake
 {
     [CreateAssetMenu]
     public class AutoBake2 : ScriptableObject
@@ -169,7 +169,8 @@ namespace EditorAutomation
                         var csvReader = new CsvReader(streamRdr, ",");
                         while (csvReader.Read())
                         {
-                            strBuilder.Append(csvReader[locationIndex]);
+                            if (!string.IsNullOrWhiteSpace(csvReader[locationIndex]))
+                                strBuilder.Append(csvReader[locationIndex]);
                         }
                     }
                     // Step 2 : Delete duplicates

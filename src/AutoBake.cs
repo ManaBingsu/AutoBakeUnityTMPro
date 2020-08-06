@@ -8,7 +8,7 @@ using System.Text;
 using System;
 using UnityEditorInternal;
 
-namespace EditorAutomation
+namespace AutoBake
 {
     [CreateAssetMenu]
     public class AutoBake : ScriptableObject
@@ -151,7 +151,7 @@ namespace EditorAutomation
             // Check if list is null
 
             // Bake text
-            foreach(Location location in locations)
+            foreach (Location location in locations)
             {
                 int locationIndex = location.index;
                 foreach (TMP_FontAsset fontAsset in location.fontAssets)
@@ -170,7 +170,8 @@ namespace EditorAutomation
                         var csvReader = new CsvReader(streamRdr, ",");
                         while (csvReader.Read())
                         {
-                            strBuilder.Append(csvReader[locationIndex]);
+                            if (!string.IsNullOrWhiteSpace(csvReader[locationIndex]))
+                                strBuilder.Append(csvReader[locationIndex]);
                         }
                     }
                     // Step 2 : Delete duplicates
@@ -179,7 +180,7 @@ namespace EditorAutomation
                     List<uint> characters = new List<uint>();
                     for (int i = 0; i < characterSequence.Length; i++)
                     {
-                        uint unicode = characterSequence[i];                   
+                        uint unicode = characterSequence[i];
                         // Handle surrogate pairs
                         if (i < characterSequence.Length - 1 && char.IsHighSurrogate((char)unicode) && char.IsLowSurrogate(characterSequence[i + 1]))
                         {
@@ -197,17 +198,17 @@ namespace EditorAutomation
                     fontAsset.atlasPopulationMode = AtlasPopulationMode.Dynamic;
                     fontAsset.ClearFontAssetData();
                     fontAsset.TryAddCharacters(characterSet, out missingString);
-                    
+
+                    StringBuilder missingStrBuilder = new StringBuilder();
                     if (missingString != null)
                     {
-                        string temp = "";
-                        foreach(uint unicode in missingString)
+                        foreach (uint unicode in missingString)
                         {
-                            temp += Convert.ToChar(unicode);
-                            temp += " ";
+                            missingStrBuilder.Append(Convert.ToChar(unicode));
+                            missingStrBuilder.Append(" ");
                         }
-                        Debug.LogError("<color=red>[Fatal error] </color>Missing string : " + temp + " ");
-                    }    
+                        Debug.LogError($"<color=red>[Fatal error] </color>Missing string : {missingStrBuilder} ");
+                    }
                     fontAsset.atlasPopulationMode = AtlasPopulationMode.Static;
                     TMPro_EventManager.ON_FONT_PROPERTY_CHANGED(true, fontAsset);
                     EditorUtility.SetDirty(fontAsset);
@@ -230,4 +231,3 @@ namespace EditorAutomation
         }
     }
 }
-
