@@ -3,12 +3,11 @@ Unity package for automated TextMeshPro baking
 ## 개요
 AutoBake는 Bobbin refresh 후 갱신된 Csv파일을 기반으로 기존에 있던 TextMeshPro의 폰트에셋들을 새롭게 굽는 과정을 자동화한 툴입니다.
 
-----------
 ## 개발 환경
 
 -   Unity 2019.4.3f1
 
-----------
+
 
 ## 패키지 구성
 
@@ -16,7 +15,6 @@ AutoBake는 Bobbin refresh 후 갱신된 Csv파일을 기반으로 기존에 있
 -   AutoBake2.cs
 -   TMPro_FontAssetCreatorWindow.cs
 
-----------
 
 ## 사용 방법
 
@@ -46,10 +44,10 @@ CsvReader의 경우 CsvReader.cs 만 설치하셔도 됩니다.
 -   [Bobbin](https://github.com/radiatoryang/bobbin) (by radiatorayang)
 -   [CsvReader](https://github.com/nreco/csv/) (by NReco)
 
-### Version 2를 사용할 경우
+### Version 2를 사용할 경우 (중요)
 
-프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1\Scripts\Editor 폴더에 존재하는 TMPro_FontAssetCreatorWindow.cs 파일을 AutoBake 패키지 내에 있는 동일한 이름의 파일로 덮어씌워야 합니다.
-
+- 프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1\Scripts\Editor 폴더에 존재하는 TMPro_FontAssetCreatorWindow.cs 파일을 AutoBake 패키지 내에 있는 동일한 이름의 파일로 덮어씌워야 합니다.
+- 이후 유니티가 자동으로 TMPro 패키지를 롤백하는 것을 막기 위해 프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1 폴더를 프로젝트명\Packages로 옮겨줍니다.
 ### 생성
 ![howtocreate](https://user-images.githubusercontent.com/43133819/88871472-ec30e500-d252-11ea-9559-07b5972dbba7.png)
 
