@@ -1,7 +1,8 @@
 # AutoBake
 Unity package for automated TextMeshPro baking
-## 개요
-AutoBake는 Bobbin refresh 후 갱신된 Csv파일을 기반으로 기존에 있던 TextMeshPro의 폰트에셋들을 새롭게 굽는 과정을 자동화한 툴입니다.
+
+## Summary
+AutoBake is a tool that automates the process of baking existing TextMeshPro font assets based on the updated Csv file after Bobbin refresh.
 
 ## Development environment
 
@@ -16,7 +17,7 @@ AutoBake는 Bobbin refresh 후 갱신된 Csv파일을 기반으로 기존에 있
 
 ## How to use
 
-AutoBake와 AutoBake2 중에 필요하신 것을 사용하시면 됩니다.
+You can use the one you need between AutoBake and AutoBake2. Recommend AutoBake.
 
 ### About AutoBake (Recommended)
 
