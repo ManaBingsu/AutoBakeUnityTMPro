@@ -45,8 +45,9 @@ CsvReader의 경우 CsvReader.cs 만 설치하셔도 됩니다.
 
 ~~### When using AutoBake 2~~
 
-~~- 프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1\Scripts\Editor 폴더에 존재하는 TMPro_FontAssetCreatorWindow.cs 파일을 AutoBake 패키지 내에 있는 동일한 이름의 파일로 덮어씌워야 합니다.~~
-~~- 이후 유니티가 자동으로 TMPro 패키지를 롤백하는 것을 막기 위해 프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1 폴더를 프로젝트명\Packages로 옮겨줍니다.~~AutoBake2 is not recommended.
+~~프로젝트명\Library\PackageCache\com.unity.textmeshpro@2.1.1\Scripts\Editor 폴더에 존재하는 TMPro_FontAssetCreatorWindow.cs 파일을 AutoBake 패키지 내에 있는 동일한 이름의 파일로 덮어씌워야 합니다.- 이후 유니티가 자동으로 TMPro 패키지를 롤백하는 것을 막기 위해 프로젝트\Library\PackageCache\com.unity.textmeshpro@2.1.1 폴더를 프로젝트명\Packages로 옮겨줍니다.~~
+
+AutoBake2 is not recommended.
 
 ### 
 ![howtocreate](https://user-images.githubusercontent.com/43133819/88871472-ec30e500-d252-11ea-9559-07b5972dbba7.png)
