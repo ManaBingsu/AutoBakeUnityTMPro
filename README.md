@@ -38,7 +38,7 @@ You can use the one you need between AutoBake and AutoBake2. Recommend AutoBake.
 
 In order to use it, you need to get the essential packages from link and apply them to your project.
 
-CsvReader의 경우 CsvReader.cs 만 설치하셔도 됩니다.
+For CsvReader, you only need to install CsvReader.cs.
 
 -   [Bobbin](https://github.com/radiatoryang/bobbin) (by radiatorayang)
 -   [CsvReader](https://github.com/nreco/csv/) (by NReco)
